@@ -1,0 +1,87 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$app-discord-blurple: #8c9eff;
+$mat-discord: (
+  50: #e8eaf6,
+  100: #c0cfff,
+  200: #a5b9ff,
+  300: #8c9eff,
+  400: #7289da,
+  500: #5870cb,
+  600: #3f5ca8,
+  700: #3f5ca8,
+  800: #3f5ca8,
+  900: #3f5ca8,
+  A100: #8c9eff,
+  A200: #7289da,
+  A400: #5870cb,
+  A700: #3f5ca8,
+  contrast: (
+      50: $light-primary-text,
+      100: $light-primary-text,
+      200: $light-primary-text,
+      300: $light-primary-text,
+      400: $light-primary-text,
+      500: $light-primary-text,
+      600: $light-primary-text,
+      700: $light-primary-text,
+      800: $light-primary-text,
+      900: $light-primary-text,
+      A100: $dark-primary-text,
+      A200: $light-primary-text,
+      A400: $light-primary-text,
+      A700: $light-primary-text,
+  )
+);
+
+$app-discord-red: #ff5e6a;
+$mat-discord-red: (
+    50: #ffebee,
+    100: #ffcdd2,
+    200: #ff5e6a,
+    300: #ff5e6a,
+    400: #ff5e6a,
+    500: #ff5e6a,
+    600: #ff5e6a,
+    700: #ff5e6a,
+    800: #ff5e6a,
+    900: #ff5e6a,
+    A100: #ff5e6a,
+    A200: #ff5e6a,
+    A400: #ff5e6a,
+    A700: #ff5e6a,
+    contrast: (
+        50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $dark-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text,
+    )
+);
+
+$bg-primary: map-get($map: $mat-discord, $key: 400);
+$app-theme-primary: mat-palette($mat-discord, 400, 200, 600);
+$app-theme-accent: mat-palette($mat-discord, 300, 100, 500);
+$app-theme-warn: mat-palette($mat-discord-red);
+
+$app-theme: mat-dark-theme($app-theme-primary, $app-theme-accent, $app-theme-warn);
+
+@include angular-material-theme($app-theme);
+
+$success-primary: mat-palette($mat-green, A700);
+$success-accent: mat-palette($mat-grey, A100);
+$component-theme-success: mat-dark-theme($success-primary, $success-accent, $app-theme-warn);
+
+.theme-success {
+    @include angular-material-theme($component-theme-success);
+}

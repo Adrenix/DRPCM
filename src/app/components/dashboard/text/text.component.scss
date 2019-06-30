@@ -1,0 +1,44 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container > * {
+    width: 100%;
+}
+
+.checkers {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1px;
+    width: 13% !important;
+}
+
+.checkers > * {
+    margin-bottom: 5px;
+}
+
+.party-container {
+    display: flex;
+}
+
+.party-fields {
+    width: 100%;
+}
+
+.party-fields > * {
+    width: 100%;
+}
+
+.party-slider {
+    width: 60px;
+}
+
+.actions {
+    display: flex;
+    margin-top: 72px;
+}
+
+.actions > * {
+    flex: 1;
+}

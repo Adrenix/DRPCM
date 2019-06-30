@@ -1,0 +1,9 @@
+<mat-toolbar color="primary" class="top-bar">
+    <button type="button" mat-icon-button class="hover-discord" [disabled]="rpc.connecting" (click)="onDrawer()"><mat-icon>menu</mat-icon></button>
+    <span style="margin-right: auto">Discord RPC Manager</span>
+    <span>
+        <button mat-icon-button class="hover-discord" (click)="onMinimize()"><mat-icon>remove</mat-icon></button>
+        <button mat-icon-button class="hover-discord" (click)="onMaximize()"><mat-icon>{{ isMaximized ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon></button>
+        <button mat-icon-button class="hover-red" (click)="onClose()"><mat-icon>close</mat-icon></button>
+    </span>
+</mat-toolbar>

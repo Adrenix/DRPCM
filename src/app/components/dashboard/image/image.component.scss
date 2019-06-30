@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container > * {
+    width: 100%;
+}
+
+.large-image, .small-image {
+    display: flex;
+    flex: 1;
+    margin-top: 10px;
+}
+
+.large-image > *, .small-image > * {
+    width: 50%;
+}
+
+.small-image {
+    margin-top: 25px;
+}
+
+.last-child {
+    margin-left: 23px;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.actions {
+    display: flex;
+    margin-top: 75px;
+}
+
+.actions > * {
+    width: 50%;
+}

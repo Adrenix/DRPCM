@@ -1,0 +1,142 @@
+<mat-divider></mat-divider>
+<div class="container">
+    <h2 style="margin: 15px 0 5px 0">Information</h2>
+    <mat-form-field appearance="outline">
+        <mat-label>Detail</mat-label>
+        <input
+            matInput
+            required
+            placeholder="First line"
+            [(ngModel)]="rpc.data.details"
+            [formControl]="detailsControl"
+        >
+        <mat-icon
+            matSuffix
+            matTooltip="This text will appear below the application name."
+            matTooltipClass="tooltip">
+            help_outline
+        </mat-icon>
+        <mat-hint align="end">{{rpc.data.details.length}} / 128</mat-hint>
+        <mat-error *ngIf="detailsControl.hasError('minlength')">
+            The details line has to be greater than or equal to <strong>2</strong> characters!
+        </mat-error>
+        <mat-error *ngIf="detailsControl.hasError('maxlength')">
+            The details line has to be less than or equal to <strong>128</strong> characters!
+        </mat-error>
+        <mat-error *ngIf="detailsControl.hasError('required')">
+            The details line is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input
+            matInput
+            required
+            placeholder="Second line"
+            [(ngModel)]="rpc.data.state"
+            [formControl]="stateControl"
+        >
+        <mat-icon 
+            matSuffix
+            matTooltip="This text will appear below the details line."
+            matTooltipClass="tooltip">
+            help_outline
+        </mat-icon>
+        <mat-hint align="end">{{rpc.data.state.length}} / 128</mat-hint>
+        <mat-error *ngIf="stateControl.hasError('minlength')">
+            The state has to be greater than or equal to <strong>2</strong> characters!
+        </mat-error>
+        <mat-error *ngIf="stateControl.hasError('maxlength')">
+            The state has to be less than or equal to <strong>128</strong> characters!
+        </mat-error>
+        <mat-error *ngIf="stateControl.hasError('required')">
+            A state is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <h2 style="margin-bottom: 7px;">Options</h2>
+    <div class="checkers">
+        <mat-checkbox [disabled]="rpc.connecting" [(ngModel)]="rpc.data.timer">Enable Timer</mat-checkbox>
+        <mat-checkbox [disabled]="rpc.connecting" [(ngModel)]="rpc.data.partyState">Enable Party</mat-checkbox>
+    </div>
+
+    <h2 style="margin: 25px 0 5px 0">Party</h2>
+    <div class="party-container">
+        <mat-slider
+            class="party-slider"
+            vertical="true"
+            thumbLabel="true"
+            min="0"
+            [max]="rpc.data.partyMax"
+            [(value)]="rpc.data.partySize"
+            [disabled]="!validatePartySlider() || rpc.connecting">
+        </mat-slider>
+
+        <div class="party-fields">
+            <mat-form-field style="margin-right: 25px;">
+                <mat-label>Maximum Size</mat-label>
+                <input 
+                    matInput
+                    required
+                    type="number"
+                    placeholder="Maximum party size"
+                    [(ngModel)]="rpc.data.partyMax"
+                    [formControl]="partyMaxControl"
+                >
+                <mat-icon 
+                    matSuffix
+                    matTooltip="Party size will be displayed to the right of the state text."
+                    matTooltipClass="tooltip">
+                    help_outline
+                </mat-icon>
+                <mat-error *ngIf="partyMaxControl.hasError('min')">
+                    Please enter a number greater than or equal to <strong>1</strong>
+                </mat-error>
+                <mat-error *ngIf="partyMaxControl.hasError('max')">
+                    Please enter a number less than or equal to <strong>100</strong>
+                </mat-error>
+                <mat-error *ngIf="partyMaxControl.hasError('required')">
+                    A maximum party size is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Current Size</mat-label>
+                <input 
+                    matInput
+                    required
+                    placeholder="Current party size"
+                    [(ngModel)]="rpc.data.partySize"
+                    [formControl]="partySizeControl"
+                >
+                <mat-icon 
+                    matSuffix
+                    matTooltip="Ensure this is less than or equal to the maximum size."
+                    matTooltipClass="tooltip">
+                    help_outline
+                </mat-icon>
+                <mat-hint align="start">Keep current size less than maximum!</mat-hint>
+                <mat-hint align="end">{{rpc.data.partySize}} / {{rpc.data.partyMax}}</mat-hint>
+                <mat-error *ngIf="partySizeControl.hasError('min')">
+                    Please enter a number greater than or equal to <strong>0</strong>
+                </mat-error>
+                <mat-error *ngIf="partySizeControl.hasError('max')">
+                    Please enter a number less than or equal to <strong>{{rpc.data.partyMax}}</strong>
+                </mat-error>
+                <mat-error *ngIf="partySizeControl.hasError('required')">
+                    A party size is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button
+            mat-stroked-button
+            color="warn"
+            [disabled]="rpc.connecting"
+            (click)="rpc.clearTextFields()"
+        >
+            Clear Fields
+        </button>
+    </div>
+</div>

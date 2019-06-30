@@ -1,0 +1,55 @@
+@import '../../../../app-theme-colors.scss';
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.preview-header {
+    border-radius: 8px;
+    height: 130px;
+    width: 510px;
+    padding: 20px;
+    background-color: $app-blurple;
+}
+
+.small-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 38px;
+    height: 38px;
+    background-color: $app-blurple;
+    border-radius: 50%;
+    margin: 63px 0 0 61px;
+}
+
+.small-image {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.details-container {
+    display: flex;
+    margin-top: 8px;
+}
+
+.text-container {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.large-image {
+    border-radius: 4px;
+    width: 90px;
+    height: 90px;
+}
+
+.actions {
+    display: flex;
+    margin-top: 36px;
+    margin-left: 11px;
+}

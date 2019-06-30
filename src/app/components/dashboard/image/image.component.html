@@ -1,0 +1,77 @@
+<mat-divider></mat-divider>
+<div class="container">
+    <div class="large-image">
+        <mat-form-field class="first-child">
+            <mat-select [(value)]="rpc.data.largeAsset" [disabled]="rpc.connecting">
+                <mat-option>-- None --</mat-option>
+                <mat-option
+                    *ngFor="let asset of rpc.assets"
+                    [value]="asset.id"
+                    >
+                    <img class="avatar" [src]="rpc.getAssetImage(asset.id)" alt="undefined">
+                    {{asset.name}}
+                </mat-option>
+            </mat-select>
+            <mat-label>
+                Large Image
+            </mat-label>
+        </mat-form-field>
+        <mat-form-field class="last-child">
+            <mat-label>Large Hover</mat-label>
+            <input matInput placeholder="Hover text" [disabled]="rpc.connecting" [(ngModel)]="rpc.data.largeHover">
+            <mat-icon 
+                matSuffix
+                matTooltip="This text will appear when the mouse is hovered over the large image."
+                matTooltipClass="tooltip">
+                help_outline
+            </mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="small-image">
+        <mat-form-field class="first-child">
+            <mat-select [(value)]="rpc.data.smallAsset" [disabled]="rpc.connecting">
+                <mat-option>-- None --</mat-option>
+                <mat-option
+                    *ngFor="let asset of rpc.assets"
+                    [value]="asset.id">
+                    <img class="avatar" [src]="rpc.getAssetImage(asset.id)" alt="undefined">
+                    {{asset.name}}
+                </mat-option>
+            </mat-select>
+            <mat-label>
+                Small Image
+            </mat-label>
+        </mat-form-field>
+        <mat-form-field class="last-child">
+            <mat-label>Small Hover</mat-label>
+            <input matInput placeholder="Hover text" [disabled]="rpc.connecting" [(ngModel)]="rpc.data.smallHover">
+            <mat-icon 
+                matSuffix
+                matTooltip="This text will appear when the mouse is hovered over the small image."
+                matTooltipClass="tooltip">
+                help_outline
+            </mat-icon>
+        </mat-form-field>
+    </div>
+
+    <div class="actions">
+        <button
+            mat-raised-button
+            color="primary"
+            [disabled]="rpc.connecting || rpc.isAssetCooling"
+            (click)="onRefreshLists()"
+        >
+            {{rpc.isAssetCooling ? 'Cooling...' : 'Refresh Lists'}}
+        </button>
+        <button
+            mat-stroked-button
+            color="warn"
+            [disabled]="rpc.connecting"
+            style="margin-left: 22px;"
+            (click)="rpc.clearImageFields()"
+        >
+            Clear Fields
+        </button>
+    </div>
+</div>

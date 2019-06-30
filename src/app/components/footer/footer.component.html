@@ -1,0 +1,17 @@
+<div class="footer">
+    <button
+        mat-icon-button
+        [disabled]="rpc.connecting"
+        (click)="openInfoDialog()"
+    >
+        <mat-icon>info</mat-icon>
+    </button>
+    <button
+        mat-icon-button
+        [disabled]="rpc.connecting"
+        (click)="onSave()"
+    >
+        <mat-icon>save</mat-icon>
+    </button>
+    <h2 style="margin-left: auto; margin-right: 7px; margin-top: 3px">Alpha 0.1</h2>
+</div>

@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+}
+
+.stepper, .client {
+    flex: 0 0 calc(50% - 15px);
+}
+
+.stepper {
+    margin: 10px;
+}
+
+.client {
+    margin: 10px 10px 10px 0;
+}
+
+.mat-card {
+    border-radius: 0 !important;
+    position: static !important;
+}

@@ -1,0 +1,52 @@
+<div class="container">
+    <header class="preview-header mat-elevation-z2">
+        <span style="font-size: 11px;"><b>PLAYING A GAME</b></span>
+        <div class="details-container">
+            <img
+                [src]="rpc.data.largeAsset ? rpc.getAssetImage(rpc.data.largeAsset) : rpc.defaultAvatar"
+                [matTooltip]="rpc.data.largeHover"
+                class="large-image"
+            >
+            <div *ngIf="rpc.data.smallAsset" [matTooltip]="rpc.data.smallHover" class="small-image-container">
+                <img
+                    [src]="rpc.getAssetImage(rpc.data.smallAsset)"
+                    class="small-image"
+                >
+            </div>
+            <div class="text-container">
+                <div class="text-app-name">
+                    <span><b>{{rpc.data.name}}</b></span>
+                </div>
+                <div class="text-details">
+                    <span>{{'‍'}}{{(rpc.data.details | slice:0:50)+(rpc.data.details.length > 50 ? '...' : '')}}</span>
+                </div>
+                <div class="text-state">
+                    <span>{{'‍'}}{{(rpc.data.state | slice:0:40)+(rpc.data.state.length > 40 ? '...' : '')}}</span>
+                    <span *ngIf="rpc.data.partyState"> ({{rpc.data.partySize}} of {{rpc.data.partyMax}})</span>
+                </div>
+                <div *ngIf="rpc.data.timer" class="text-timestamp">
+                     <span>00:00</span>
+                </div>
+            </div>
+        </div>
+    </header>
+</div>
+<div class="actions">
+    <button
+        mat-raised-button
+        color="primary"
+        [disabled]="rpc.connecting || !rpc.clientActivated"
+        (click)="rpc.setActivity()"
+    >
+        Start
+    </button>
+    <button
+        mat-stroked-button
+        color="warn"
+        style="margin-left: 8px"
+        [disabled]="rpc.connecting || !rpc.clientActivated"
+        (click)="rpc.clearActivity()"
+    >
+        Stop
+    </button>
+</div>

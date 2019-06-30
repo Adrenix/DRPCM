@@ -1,0 +1,15 @@
+@import '../../../app-theme-colors.scss';
+
+.sidenav-container {
+    position: relative;
+    height: 100%;
+}
+
+.sidenav {
+    width: 200px;
+    box-shadow: $shadow;
+}
+
+.sidenav .mat-toolbar {
+    background: inherit;
+}

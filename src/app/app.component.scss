@@ -1,0 +1,10 @@
+@import '../app-theme-colors.scss';
+
+.top-drag {
+    width: 100vw;
+    background-color: $app-titlebar;
+    position: absolute;
+    height: 1px;
+    z-index: 101;
+    -webkit-app-region: no-drag;
+}

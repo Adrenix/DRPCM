@@ -1,0 +1,38 @@
+@import '../../../app-theme-colors.scss';
+
+.top-bar {
+    -webkit-app-region: drag;
+    margin-top: 1px;
+    background-color: $app-titlebar;
+}
+
+.mat-toolbar.mat-primary {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    z-index: 99;
+    height: 40px;
+    top: 0;
+    padding: 0;
+    box-shadow: $shadow;
+}
+
+.mat-toolbar.mat-primary :nth-child(2) {
+    justify-self: flex-start;
+}
+
+.program-title {
+    margin-top: 20px;
+}
+
+.mat-toolbar button {
+    -webkit-app-region: no-drag;
+}
+
+.hover-red:hover {
+    color: red;
+}
+
+.hover-discord:hover {
+    color: $app-blurple;
+}

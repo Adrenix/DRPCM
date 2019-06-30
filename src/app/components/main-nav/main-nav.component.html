@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport="false" [attr.role]="'dialog'" [mode]="'over'" [opened]="false">
+        <mat-toolbar>DRPCM</mat-toolbar>
+        <mat-nav-list style="user-select: none">
+            <a mat-list-item (click)="drawer.close().catch()"><mat-icon mat-list-icon>gamepad</mat-icon>RPC Status</a>
+            <a mat-list-item style="color: gray; cursor: default;"><mat-icon mat-list-icon>library_books</mat-icon>Change Client</a>
+            <a mat-list-item style="color: gray; cursor: default;"><mat-icon mat-list-icon>library_add</mat-icon>New Client</a>
+            <a mat-list-item (click)="onAssets()"><mat-icon mat-list-icon>open_in_browser</mat-icon>Asset Portal</a>
+            <a mat-list-item style="color: gray; cursor: default;"><mat-icon mat-list-icon>settings</mat-icon>Settings</a>
+            <a mat-list-item style="color: gray; cursor: default;"><mat-icon mat-list-icon>contact_support</mat-icon>Help</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="sidenav-content">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

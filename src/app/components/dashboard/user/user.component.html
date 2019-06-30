@@ -1,0 +1,76 @@
+<mat-card class="user-card mat-elevation-z0">
+    <mat-card-header>
+        <div mat-card-avatar class="spinner">
+            <img *ngIf="!avatar && !rpc.connecting" mat-card-avatar [src]="rpc.defaultAvatar">
+            <mat-spinner *ngIf="rpc.connecting" [diameter]="40"></mat-spinner>
+            <img *ngIf="avatar && !rpc.connecting" mat-card-avatar [src]="avatar">
+        </div>
+        <mat-card-title *ngIf="!avatar">Waiting...</mat-card-title>
+        <mat-card-title *ngIf="avatar">{{ username }}</mat-card-title>
+        <mat-card-subtitle *ngIf="!avatar">
+            <span style="color: orange; display: flex; align-items: flex-end;">
+                <mat-icon style="font-size: 20px">warning</mat-icon>Disconnected
+            </span>
+        </mat-card-subtitle>
+        <mat-card-subtitle *ngIf="avatar">
+            <span style="color: rgb(110, 219, 110); display: flex; align-items: flex-end;">
+                <mat-icon style="font-size: 20px">verified_user</mat-icon>Connected
+            </span>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="user-content">
+        <mat-form-field style="margin-top: 20px; width: 100%;">
+            <mat-label>RPC Client ID</mat-label>
+            <input #idInput
+                matInput
+                required
+                placeholder="Client identifier"
+                (keyup.enter)="validClientId(idInput.value).catch()"
+                (blur)="validClientId(idInput.value).catch()"
+                [value]="rpc.clientId"
+                [disabled]="rpc.connecting"
+            >
+            <button
+                mat-icon-button
+                matSuffix
+                matTooltip="Click to assign identifier."
+                matTooltipClass="tooltip"
+                style="font-size: 22px; align-self: center;"
+                (click)="validClientId(idInput.value).catch()"
+            >
+                <mat-icon>send</mat-icon>
+            </button>
+            <mat-icon
+                matSuffix
+                matTooltip="Add your application identifier for assets here."
+                matTooltipClass="tooltip"
+                style="display: inline-flex; vertical-align: bottom; padding-bottom: 4px;"
+            >
+                help_outline
+            </mat-icon>
+            <mat-hint *ngIf="checking" align="start" style="display: flex;">
+                <mat-spinner [diameter]="14"></mat-spinner>
+                <span style="margin: 2px 0 0 5px;">Checking identifier...</span>
+            </mat-hint>
+            <mat-hint *ngIf="!checking && isValidId" align="start" style="display: flex; color: rgb(110, 219, 110);">
+                <mat-icon style="font-size: 14px">check</mat-icon>
+                <span style="margin: 2px 0 0 5px;">Valid Identifier</span>
+            </mat-hint>
+            <mat-hint *ngIf="!checking && !isValidId" align="start" style="display: flex; color: #ff5e6a;">
+                <mat-icon style="font-size: 14px">clear</mat-icon>
+                <span style="margin: 2px 0 0 5px;">Invalid Identifier</span>
+            </mat-hint>
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>
+
+<div class="user-actions">
+    <button mat-raised-button color="primary" [disabled]="rpc.connecting" (click)="onConnect()">Connect</button>
+    <button
+        mat-stroked-button
+        color="warn"
+        style="margin-left: 8px"
+        [disabled]="rpc.connecting || !rpc.clientActivated"
+        (click)="onDisconnect()"
+    >Disconnect</button>
+</div>

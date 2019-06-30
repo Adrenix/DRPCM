@@ -1,0 +1,49 @@
+<div class="grid-container">
+    <mat-grid-list cols="2" rowHeight="350px">
+        <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <span style="display: flex; align-items: flex-end; margin-left: 11px">
+                            <mat-icon
+                              *ngIf="card.icon"
+                              style="font-size: 27px; position: absolute; left: 13px;">
+                              {{card.icon}}
+                            </mat-icon>
+                            {{card.title}}
+                        </span>
+                        <button
+                            *ngIf="card.buttons"
+                            mat-icon-button class="more-button"
+                            [disabled]="rpc.connecting"
+                            [matMenuTriggerFor]="menu">
+                            <mat-icon>more_vert</mat-icon>
+                        </button>
+                            <mat-menu #menu="matMenu" xPosition="before">
+                                <ng-container *ngFor="let action of card.buttons">
+                                    <button mat-menu-item (click)="action.click()">
+                                        <mat-divider *ngIf="action.divide"></mat-divider>
+                                        <mat-icon>{{action.icon}}</mat-icon>{{action.title}}
+                                    </button>
+                                </ng-container>
+                            </mat-menu>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <div *ngIf="card.id === 'rpc'">
+                        <app-dashboard-rpc></app-dashboard-rpc>
+                    </div>
+                    <div *ngIf="card.id === 'user'">
+                        <app-dashboard-user></app-dashboard-user>
+                    </div>
+                    <div *ngIf="card.id === 'text'">
+                        <app-dashboard-text></app-dashboard-text>
+                    </div>
+                    <div *ngIf="card.id === 'image'">
+                        <app-dashboard-image></app-dashboard-image>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
