@@ -13,5 +13,5 @@ export class RPCHelpComponent {}
     styleUrls: ['./rpc.component.scss']
 })
 export class RPCComponent {
-    constructor(private rpc: RPCService) {}
+    constructor(public rpc: RPCService) {}
 }

@@ -22,8 +22,8 @@ export class FooterInfoDialogComponent {
     styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-    constructor(private store: StoreService,
-                private rpc: RPCService,
+    constructor(public store: StoreService,
+                public rpc: RPCService,
                 public dialog: MatDialog,
                 public snackbar: MatSnackBar
     ) {}

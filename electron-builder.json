@@ -1,5 +1,5 @@
 {
-  "productName": "angular-electron",
+  "productName": "DRPCM",
   "directories": {
     "output": "release/"
   },
@@ -20,7 +20,7 @@
         "!tslint.json"
     ],
   "win": {
-    "icon": "dist",
+    "icon": "build/icon.png",
     "target": [
       "portable"
     ]
