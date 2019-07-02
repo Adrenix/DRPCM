@@ -36,6 +36,7 @@
                 matTooltip="Click to assign identifier."
                 matTooltipClass="tooltip"
                 style="font-size: 22px; align-self: center;"
+                [disabled]="rpc.connecting"
                 (click)="validClientId(idInput.value).catch()"
             >
                 <mat-icon>send</mat-icon>

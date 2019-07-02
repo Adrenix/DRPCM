@@ -63,8 +63,13 @@ export class RPCService {
         this.empty();
         this.cacheAssets().catch();
         this.setAssets(this.store.data.assets);
+
         this.electron.ipcRenderer.on('render-transport-closed', () => {
             this.snackbar.open('Discord client was disconnected.', 'Close', { duration: 3000 });
+        });
+
+        this.electron.ipcRenderer.on('log', (_: null, log: string, data?: any) => {
+            console.log(`[MAIN PROCESS]: ${log}`, data);
         });
     }
 
@@ -213,8 +218,10 @@ export class RPCService {
             largeImageText: this.data.largeHover || undefined,
             smallImageKey: this.getAssetKey(this.data.smallAsset) || undefined,
             smallImageText: this.data.smallHover || undefined,
-            partySize: this.data.partyState ? this.data.partySize : undefined,
-            partyMax: this.data.partyState ? this.data.partyMax : undefined
+            // tslint:disable-next-line:radix
+            partySize: this.data.partyState ? parseInt(String(this.data.partySize)) : undefined,
+            // tslint:disable-next-line:radix
+            partyMax: this.data.partyState ? parseInt(String(this.data.partyMax)) : undefined
         };
 
         if (!this.validatedPresence()) {
@@ -231,6 +238,7 @@ export class RPCService {
     }
 
     public clearActivity(): void {
+        this.data.name = 'Stopped';
         this.electron.transport.clearActivity();
     }
 
