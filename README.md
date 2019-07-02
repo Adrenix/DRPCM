@@ -2,7 +2,7 @@
 > Discord RPC Manager
 
 ![](https://travis-ci.org/Adrenix/DRPCM.svg?branch=master)
-[![Github All Releases](https://img.shields.io/github/downloads/Adrenix/DRPCM/total.svg)]()
+[![Github All Releases](https://img.shields.io/github/downloads/Adrenix/DRPCM/total.svg)](https://github.com/Adrenix/DRPCM/releases)
 
 DRPCM is a RPC manager for Discord. This program allows users to create custom RPC statuses for unsupported games.
 Simply supply a Discord application identifier, some images, some text, and you are ready to go!
