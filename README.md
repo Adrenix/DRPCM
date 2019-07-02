@@ -11,7 +11,9 @@ more features will be added.
 
 ![](https://cdn.discordapp.com/attachments/594655172618354688/594656415378047017/unknown.png)
 
-## Installation
+## Download & Installation
+
+Current releases of DRPCM can be found [here](https://github.com/Adrenix/DRPCM/releases).
 
 Windows:
 
