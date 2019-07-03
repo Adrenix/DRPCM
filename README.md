@@ -55,7 +55,7 @@ In the future, predefined RPC packs can be created and will allow you to populat
 
 Support Server - https://discord.gg/jWdfVh3
 
-Twitter – [@_Adrenix](https://twitter.com/dbader_org)
+Twitter – [@_Adrenix](https://twitter.com/_Adrenix)
 
 YouTube - [/c/Adrenix](https://youtube.com/c/adrenix)
 
